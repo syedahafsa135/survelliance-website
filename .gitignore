@@ -10,7 +10,9 @@ node_modules
 dist
 dist-ssr
 *.local
-/backendforrtspcam/surveilliance-website-firebase-adminsdk-fbsvc-66c1c228bf.json
+# Firebase service-account keys: never commit any of them
+*firebase-adminsdk*.json
+.env
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
