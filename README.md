@@ -4,7 +4,7 @@
      (avoid frames that show real people's faces without their consent) -->
 ![Surveillance dashboard](images/dashboard.png)
 
-Final year project (team), BSc Computer Systems Engineering, NED University of Engineering and Technology.
+Final year project (team), BE Computer and Information Systems Engineering, NED University of Engineering and Technology.
 A system that watches live camera feeds and raises real-time alerts for **falls, fire, weapons and fights**, logging each event so it can be reviewed later.
 
 **Portfolio:** [syedahafsa135.github.io](https://syedahafsa135.github.io)
@@ -25,6 +25,10 @@ This was a team project. **My contributions:**
 
 The fire, weapon and fight models, the frontend and the rest of the backend were built by my teammates.
 
+## Data
+
+Fall and jump model: 15,000+ images across 7 classes. I annotated video data in CVAT for training.
+
 ## Results: fall and jump model
 
 These are validation metrics stored inside the trained model file `backendforrtspcam/weights/fall_jump_combined_1_1_25_yolo11n_best.pt` (best epoch of 100, bounding boxes, all 7 classes):
@@ -35,7 +39,7 @@ These are validation metrics stored inside the trained model file `backendforrts
 
 The model favours recall, which suits a safety alert: it is better to flag a possible fall for review than to miss one. The next step is to improve precision so there are fewer false alarms, for example with more varied "not fall" footage.
 
-## How it works
+## Method
 
 ```
 Camera feed ──► YOLO models (fall/jump, fire, weapon, fight) ──► alert + saved frame
@@ -47,6 +51,13 @@ Camera feed ──► YOLO models (fall/jump, fire, weapon, fight) ──► ale
 - **Backend:** Flask receives and serves frames (`backendforrtspcam/app.py`).
 - **Logging:** detected events are written to Firebase.
 - **Frontend:** React dashboard with charts of logged events.
+
+## Limitations
+
+- Precision of 0.537 means false alarms; more varied "not fall" footage is the next step.
+- The metrics above cover my fall and jump model only; the fire, weapon and fight models were built by teammates.
+
+The team also wrote a research paper on the system for a NED University journal: *Automated Surveillance and Security System using Motion Transfer Technology for Real-Time Anomaly Detection*.
 
 ## Tech stack
 
